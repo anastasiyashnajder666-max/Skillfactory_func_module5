@@ -1,15 +1,12 @@
-data_list = [1, 2, 3, 4]
-
-
-def binary_search(data_list, find_el):
-    if data_list:
-        index_el = len(data_list) // 2
-        if find_el > data_list[index_el]:
-            return find_el in data_list[index_el+1:]
-        elif find_el < data_list[index_el]:
-            return find_el in data_list[:index_el]
-        return True
-    return False
-
-
-print(binary_search(data_list, 0))
+def binary_search(lst, target):
+   if len(lst) == 0:
+       return False
+   else:
+       midpoint = len(lst) // 2
+       if lst[midpoint] == target:
+           return True
+       else:
+           if lst[midpoint] < target:
+               return binary_search(lst[midpoint+1:], target)
+           else:
+               return binary_search(lst[:midpoint], target)
